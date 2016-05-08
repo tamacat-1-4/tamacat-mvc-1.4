@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+	<bean id="oneTimePassword" class="org.tamacat.mvc.auth.TimeBasedOneTimePassword">
+		<property name="oneTimePasswordPeriod">
+			<value>15</value>
+		</property>
+	</bean>
+
+	<bean id="auth" class="org.tamacat.mvc.auth.DBAuthentication"
+		singleton="true">
+		<property name="tableName">
+			<value>users</value>
+		</property>
+		<property name="userKey">
+			<value>user_id</value>
+		</property>
+		<property name="passwordKey">
+			<value>password</value>
+		</property>
+		<property name="saltKey">
+			<value>salt</value>
+		</property>
+		<property name="roleKey">
+			<value>role</value>
+		</property>
+		<property name="columns">
+			<value>username,email</value>
+		</property>
+		<property name="maxCacheSize">
+			<value>100</value>
+		</property>
+		<property name="cacheExpire">
+			<value>60000</value>
+		</property>
+		<property name="secretKey">
+			<value>password</value>
+		</property>
+		<property name="oneTimePassword">
+			<ref bean="oneTimePassword" />
+		</property>
+	</bean>
+
+	<bean id="action" class="org.tamacat.mvc.impl.ActionHandler">
+		<!-- <property name="authentication"> <ref bean="auth" /> </property> -->
+		<property name="packageName">
+			<value>org.tamacat.mvc.test.action</value>
+		</property>
+	</bean>
+
+	<bean id="dispatcher" class="org.tamacat.mvc.impl.DefaultDispatcher" />
+	<bean id="exception" class="org.tamacat.mvc.impl.StatusExceptionHandler" />
+
+	<bean id="default" class="org.tamacat.mvc.impl.DefaultController">
+		<property name="handler">
+			<ref bean="action" />
+		</property>
+		<property name="handler">
+			<ref bean="dispatcher" />
+		</property>
+		<property name="handler">
+			<ref bean="exception" />
+		</property>
+	</bean>
+
+	<bean id="app" class="org.tamacat.mvc.impl.DefaultController">
+		<property name="handler">
+			<ref bean="action" />
+		</property>
+		<property name="handler">
+			<ref bean="dispatcher" />
+		</property>
+		<property name="handler">
+			<ref bean="exception" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="profileAuth" class="org.tamacat.mvc.auth.UserProfileAuthentication" singleton="true">
+		<property name="profileRequestAttributeKey">
+			<value>login</value>
+		</property>
+		<property name="singleSignOnSessionCookieName">
+			<value>SSOSession</value>
+		</property>
+		<property name="profileCookieName">
+			<value>SSOProfile</value>
+		</property>
+		<property name="tableName">
+			<value>users</value>
+		</property>
+		<property name="userKey">
+			<value>user_id</value>
+		</property>
+		<property name="passwordKey">
+			<value>password</value>
+		</property>
+		<property name="saltKey">
+			<value>salt</value>
+		</property>
+		<property name="roleKey">
+			<value>role</value>
+		</property>
+		<property name="columns">
+			<value>user_id,username,email</value>
+		</property>
+	</bean>
+	
+	<bean id="ajaxAction" class="org.tamacat.mvc.impl.AjaxActionHandler">
+		<property name="authentication">
+			<ref bean="profileAuth" />
+		</property>
+		<property name="actionProcessor">
+			<ref bean="processor" />
+		</property>
+		<property name="packageName">
+			<value>org.tamacat.mvc.test.action</value>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,7 @@
+Implementation-Title: tamacat-mvc
+Implementation-Version: 1.3-20160330
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.tamacat
+Bundle-Name: tamacat-mvc
+Bundle-Vendor: TAMACAT.ORG
+Bundle-Version: 1.3
