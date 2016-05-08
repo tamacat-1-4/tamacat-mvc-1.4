@@ -56,8 +56,6 @@ public class ActionProcessor {
 				Object o = ClassUtils.newInstance(type);
 				try {
 					m.invoke(o, req, resp);
-				} catch (Exception e) {
-					throw e;
 				} finally {
 					if (o instanceof AutoCloseable) {
 						IOUtils.close(o);
