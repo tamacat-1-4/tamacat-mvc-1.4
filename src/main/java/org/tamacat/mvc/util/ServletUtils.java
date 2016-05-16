@@ -65,8 +65,20 @@ public class ServletUtils {
 
 	public static void setContentDisposition(HttpServletResponse resp,
 			String disposition, String filename) {
-		setHeader(resp, "Content-Disposition", disposition
-				+ "; filename=" + filename);
+		setHeader(resp, "Content-Disposition", disposition+"; filename="+filename);
+	}
+
+	/**
+	 * Set a Content-Disposition Response Header for File Download.(with URL Encoding)
+	 * @param resp
+	 * @param disposition
+	 * @param filename
+	 * @param charset
+	 * @sinse 1.4-20160516
+	 */
+	public static void setContentDisposition(HttpServletResponse resp,
+			String disposition, String filename, String charset) {
+		setHeader(resp, "Content-Disposition", disposition+"; filename*="+charset+"''"+urlencode(filename, charset));
 	}
 
 	public static void bufferedWrite(HttpServletResponse resp, InputStream in)
