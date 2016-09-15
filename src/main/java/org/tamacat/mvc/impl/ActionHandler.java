@@ -78,6 +78,7 @@ public class ActionHandler implements RequestHandler {
 	
 	@Override
 	public void handleRequest(HttpServletRequest req, HttpServletResponse resp) {
+		setDefaultContentType(resp);
 		if (authentication != null) {
 			try {
 				// FORM LOGIN USERNAME AND PASSWORD CHECK.
