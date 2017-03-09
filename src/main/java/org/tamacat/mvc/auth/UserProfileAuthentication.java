@@ -23,7 +23,7 @@ public class UserProfileAuthentication implements Authentication {
 	static final Log LOG = LogFactory.getLog(UserProfileAuthentication.class);
 	
 	protected String profileRequestAttributeKey = "login";
-	protected String singleSignOnSessionCookieName = "SSOSesssion";
+	protected String singleSignOnSessionCookieName = "SSOSession";
 	protected String profileCookieName = "SSOProfile";
 
 	protected String tableName = "users";
