@@ -45,6 +45,8 @@ public class DBAuthentication extends AbstractAuthentication {
 
 	protected String database = "default";
 	protected String tableName = "users";
+	protected String tidKey = "tid";
+	protected String idKey = "id";
 	protected String userKey = "user_id";
 	protected String passwordKey = "password";
 	protected String saltKey = "salt";
@@ -66,7 +68,15 @@ public class DBAuthentication extends AbstractAuthentication {
 	public void setTableName(String tableName) {
 		this.tableName = tableName;
 	}
-
+	
+	public void setTidKey(String tidKey) {
+		this.tidKey = tidKey;
+	}
+	
+	public void setIdKey(String idKey) {
+		this.idKey = idKey;
+	}
+	
 	public void setUserKey(String userKey) {
 		this.userKey = userKey;
 	}
@@ -145,7 +155,7 @@ public class DBAuthentication extends AbstractAuthentication {
 		DefaultUserDao dao = DaoFactory.getDao(DefaultUserDao.class);
 		try {
 			dao.setDatabase(database);
-			DefaultUser user = new DefaultUser(tableName, userKey, passwordKey, saltKey, roleKey,
+			DefaultUser user = new DefaultUser(tableName, tidKey, idKey, userKey, passwordKey, saltKey, roleKey,
 				lastLoginKey, multiLoginKey, loginStatusKey, columnList.toArray(new String[columnList.size()]));
 			user.val(user.getColumn(userKey), username);
 			DefaultUser result = dao.search(user);
@@ -169,7 +179,7 @@ public class DBAuthentication extends AbstractAuthentication {
 		DefaultUserDao dao = DaoFactory.getDao(DefaultUserDao.class);
 		try {
 			dao.setDatabase(database);
-			DefaultUser user = new DefaultUser(tableName, userKey, passwordKey, saltKey, roleKey, 
+			DefaultUser user = new DefaultUser(tableName, tidKey, idKey, userKey, passwordKey, saltKey, roleKey, 
 				lastLoginKey, multiLoginKey, loginStatusKey, columnList.toArray(new String[columnList.size()]));
 			user.val(user.getColumn(userKey), username);
 			DefaultUser result = dao.search(user);
@@ -188,7 +198,7 @@ public class DBAuthentication extends AbstractAuthentication {
 		DefaultUserDao dao = DaoFactory.getDao(DefaultUserDao.class);
 		try {
 			dao.setDatabase(database);
-			DefaultUser user = new DefaultUser(tableName, userKey, passwordKey, saltKey, roleKey,
+			DefaultUser user = new DefaultUser(tableName, tidKey, idKey, userKey, passwordKey, saltKey, roleKey,
 				lastLoginKey, multiLoginKey, loginStatusKey, columnList.toArray(new String[columnList.size()]));
 			dao.setORMapper(new DefaultUserORMapper(user));
 			user.val(user.getColumn(userKey), username);
@@ -216,7 +226,7 @@ public class DBAuthentication extends AbstractAuthentication {
 		DefaultUserDao dao = DaoFactory.getDao(DefaultUserDao.class);
 		try {
 			dao.setDatabase(database);
-			DefaultUser user = new DefaultUser(tableName, userKey, passwordKey, saltKey, roleKey,
+			DefaultUser user = new DefaultUser(tableName, tidKey, idKey, userKey, passwordKey, saltKey, roleKey,
 				lastLoginKey, multiLoginKey, loginStatusKey, columnList.toArray(new String[columnList.size()]));
 			dao.setORMapper(new DefaultUserORMapper(user));
 			

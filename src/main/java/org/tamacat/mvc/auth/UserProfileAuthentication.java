@@ -27,6 +27,8 @@ public class UserProfileAuthentication implements Authentication {
 	protected String profileCookieName = "SSOProfile";
 
 	protected String tableName = "users";
+	protected String tidKey = "tid";
+	protected String idKey = "id";
 	protected String userKey = "user_id";
 	protected String passwordKey = "password";
 	protected String saltKey = "salt";
@@ -52,6 +54,14 @@ public class UserProfileAuthentication implements Authentication {
 		this.tableName = tableName;
 	}
 
+	public void setTidKey(String tidKey) {
+		this.tidKey = tidKey;
+	}
+	
+	public void setIdKey(String idKey) {
+		this.idKey = idKey;
+	}
+	
 	public void setUserKey(String userKey) {
 		this.userKey = userKey;
 	}
@@ -88,7 +98,7 @@ public class UserProfileAuthentication implements Authentication {
 	}
 	
 	public LoginUser createLoginUser() {
-		return new DefaultUser(tableName, userKey, passwordKey,
+		return new DefaultUser(tableName, tidKey, idKey, userKey, passwordKey,
 			saltKey,roleKey, lastLoginKey, multiLoginKey, loginStatusKey,
 			columns.toArray(new String[columns.size()]));
 	}
