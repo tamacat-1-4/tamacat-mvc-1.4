@@ -5,11 +5,11 @@ public class AjaxWarningException extends AjaxActionException implements ClientS
 	private static final long serialVersionUID = 1L;
 
 	public AjaxWarningException(String message) {
-		super(400, message, message, null);
+		super(412, message, message, null);
 	}
 	
 	public AjaxWarningException(String message, Throwable cause) {
-		super(400, message, message, cause);
+		super(412, message, message, cause);
 	}
 
 	public AjaxWarningException(int statusCode, String message, Throwable cause) {

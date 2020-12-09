@@ -16,7 +16,6 @@ import org.tamacat.mvc.action.ActionDefine;
 import org.tamacat.mvc.action.ActionProcessor;
 import org.tamacat.mvc.auth.Authentication;
 import org.tamacat.mvc.error.UnauthorizedException;
-import org.tamacat.mvc.impl.DefaultDispatcher;
 import org.tamacat.util.ClassUtils;
 import org.tamacat.util.StringUtils;
 

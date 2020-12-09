@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.tamacat</groupId>
 	<artifactId>tamacat-mvc</artifactId>
-	<version>1.4</version>
+	<version>1.4.1</version>
 	<packaging>jar</packaging>
 	<url>http://tamacat.org/</url>
 	<name>tamacat-mvc</name>

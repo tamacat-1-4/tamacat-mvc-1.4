@@ -20,7 +20,6 @@ import org.tamacat.auth.model.LoginUserCache;
 import org.tamacat.dao.DaoFactory;
 import org.tamacat.log.Log;
 import org.tamacat.log.LogFactory;
-import org.tamacat.mvc.auth.AbstractAuthentication;
 import org.tamacat.util.DateUtils;
 import org.tamacat.util.StringUtils;
 import org.tamacat.util.UniqueCodeGenerator;
