@@ -46,6 +46,9 @@ public class StatusExceptionHandler implements ExceptionHandler {
 	@Override
 	public void handleException(HttpServletRequest req, HttpServletResponse resp, Exception e) {
 		if (e != null) {
+			//reverse proxy forceReplaceErrorPage=false
+			resp.setHeader("X-Override-Error", "disabled");
+			
 			int status = 500;
 			String message = "Internal Server Error";
 			if (e instanceof ClientSideException) {
