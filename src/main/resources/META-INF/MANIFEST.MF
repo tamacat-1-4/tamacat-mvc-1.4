@@ -1,5 +1,5 @@
 Implementation-Title: tamacat-mvc
-Implementation-Version: 1.4.1-20201214
+Implementation-Version: 1.4.1-20201215
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.tamacat
 Bundle-Name: tamacat-mvc
